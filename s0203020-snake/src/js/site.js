@@ -84,12 +84,11 @@ function moveBody() {
     }
 }
 
-function spawnApple() {
-    let randL = (Math.random() * 99) + 1;
-    let randT = (Math.random() * 99) + 1;
+spawnApple = () => {
+    let randL = Math.round((Math.random() * 99) + 1);
+    let randT = Math.round((Math.random() * 99) + 1);
     $(".container-fruit-body").css("top", randT + "%");
     $(".container-fruit-body").css("left", randL + "%");
-    console.log("spawned");
 }
 
 function ateApple() {
