@@ -56,12 +56,15 @@ moveSnake = () => {
 
 snakeHitItself = () => {
     for (let i = 1; i < snakeBodyParts.length; i++) {
-        if (snakeBodyParts[0].offset().top === snakeBodyParts[i].offset().top &&
-            snakeBodyParts[0].offset().left === snakeBodyParts[i].offset().left) {
+        if (isHeadHittingBody(snakeBodyParts[i].offset().top, snakeBodyParts[i].offset().left)) {
             return true;
         }
     }
     return false;
+}
+
+isHeadHittingBody = (bodyPartTop, bodyPartLeft) => {
+    return snakeBodyParts[0].offset().top === bodyPartTop && snakeBodyParts[0].offset().left === bodyPartLeft;
 }
 
 growSnakeBody = position => {
