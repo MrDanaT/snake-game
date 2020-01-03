@@ -41,12 +41,12 @@ moveSnake = () => {
         snakeBodyParts[0].css("top", "+=10px");
     }
     var offsetBody = snakeBodyParts[snakeBodyParts.length - 1].offset();
-    if (snakeHitItself() === true) {
+    if (snakeHitItself()) {
         clearInterval(gameSpeed);
     }
-    if (isAppleEaten()) {
+    if (appleIsEaten()) {
         spawnApple();
-        addToBody(offsetBody);
+        growSnakeBody(offsetBody);
         score += Math.round(50 * Math.log(snakeBodyParts.length));
         $(".score").html("Score: " + score)
 
@@ -64,7 +64,7 @@ snakeHitItself = () => {
     return false;
 }
 
-addToBody = position => {
+growSnakeBody = position => {
     $(".container-snake-body").append('<div id="' + id + '" style="left:' + (position.left + 10) + 'px;top:' + (position.top) + 'px;height:10px;width:10px;background-color: greenyellow; position:fixed;"></div>');
     snakeBodyParts.push($("#" + id));
     id++;
@@ -92,7 +92,7 @@ spawnApple = () => {
     $(".container-fruit-body").css("left", randL + "%");
 }
 
-isAppleEaten = () => {
+appleIsEaten = () => {
     var applePos = $(".container-fruit-body").position();
     var snakeHeadPos = $(".container-snake-body").position();
     return isSnakeOnTheApple(applePos, snakeHeadPos)
@@ -103,3 +103,8 @@ isSnakeOnTheApple = (applePos, snakeHeadPos) => {
 }
 
 var gameSpeed = setInterval(moveSnake, 30);
+
+// Let user decide the speed. (make a textbox to use this);
+setGameSpeed = (pSpeed) => {
+    gameSpeed = pSpeed;
+}
