@@ -1,7 +1,8 @@
-var direction = "right";
-var snakeBodyParts = new Array();
-var id = 0;
-var score = 0;
+let direction = "right";
+const snakeBodyParts = new Array();
+let id = 0;
+let score = 0;
+
 $(".game-container").prepend('<div class="container-snake-body"></div>');
 snakeBodyParts.push($(".container-snake-body"));
 $(".snake-logo").hover(function(e) {
