@@ -11,23 +11,20 @@ $(".snake-logo").hover(function(e) {
     });
 });
 
-
-$(document).keypress(function(e) {
-    if ((e.which === 37 || e.which === 97) && direction !== "right")
+$(document).keydown(e => {
+    if (e.code === "ArrowLeft" && direction !== "right")
         direction = "left";
 
-    else if ((e.which === 38 || e.which === 119) && direction !== "down") // up
+    else if (e.code === "ArrowUp" && direction !== "down")
         direction = "up";
 
-    else if ((e.which === 39 || e.which === 100) && direction !== "left") // right
+    else if (e.code === "ArrowRight" && direction !== "left")
         direction = "right";
 
-    else if ((e.which === 40 || e.which === 115) && direction !== "up") // down
+    else if (e.code === "ArrowDown" && direction !== "up")
         direction = "down";
 
 });
-
-
 
 function moveSnake() {
     if (direction == "right") {
